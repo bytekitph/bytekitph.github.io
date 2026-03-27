@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ByteKit PH — Sales & Inventory Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #00a651;
+    --green-dark: #007a3d;
+    --green-light: #e8f8f0;
+    --blue: #1e3a5f;
+    --blue-mid: #2980b9;
+    --accent: #f39c12;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --bg: #f8fafb;
+    --white: #ffffff;
+    --border: #e5e7eb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 14px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--blue);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .nav-logo .dot { color: var(--green); }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 14px; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0f2744 0%, #1e3a5f 50%, #0d5c36 100%);
+    display: flex; align-items: center;
+    padding: 100px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(0,166,81,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(41,128,185,0.1) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .hero-inner {
+    max-width: 900px; margin: 0 auto;
+    position: relative; z-index: 1;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(0,166,81,0.2);
+    border: 1px solid rgba(0,166,81,0.4);
+    color: #4ade80;
+    font-size: 12px; font-weight: 600;
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 7vw, 72px);
+    font-weight: 800;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+  .hero h1 span { color: #4ade80; }
+  .hero p {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: rgba(255,255,255,0.7);
+    max-width: 560px; margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+  .hero-btns {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--green);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 700; font-size: 15px;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 4px 20px rgba(0,166,81,0.35);
+  }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); }
+  .btn-secondary {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600; font-size: 15px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.18); }
+
+  .hero-stats {
+    display: flex; justify-content: center; gap: 40px;
+    margin-top: 60px; flex-wrap: wrap;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .num {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px; font-weight: 800;
+    color: white;
+  }
+  .hero-stat .num span { color: #4ade80; }
+  .hero-stat .lbl { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 24px; }
+  .section-inner { max-width: 960px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--green);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800; color: var(--blue);
+    margin-bottom: 14px; line-height: 1.15;
+  }
+  .section-sub {
+    font-size: 16px; color: var(--muted);
+    max-width: 520px; line-height: 1.6;
+  }
+
+  /* ── FEATURES ── */
+  .features { background: white; }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px; margin-top: 48px;
+  }
+  .feature-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .feature-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-3px); }
+  .feature-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 14px;
+  }
+  .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--blue); }
+  .feature-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── SCREENSHOTS ── */
+  .screenshots { background: var(--blue); padding: 80px 24px; }
+  .screenshots .section-label { color: #4ade80; }
+  .screenshots .section-title { color: white; }
+  .screenshots .section-sub { color: rgba(255,255,255,0.6); }
+  .screenshots-scroll {
+    display: flex; gap: 16px;
+    overflow-x: auto;
+    padding: 32px 4px 16px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.2) transparent;
+    -webkit-overflow-scrolling: touch;
+  }
+  .screenshots-scroll::-webkit-scrollbar { height: 4px; }
+  .screenshots-scroll::-webkit-scrollbar-track { background: transparent; }
+  .screenshots-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+  .screenshot-card {
+    flex-shrink: 0;
+    width: 200px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .screenshot-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+  .screenshot-mock {
+    width: 100%; aspect-ratio: 9/19;
+    display: flex; flex-direction: column;
+    background: #0f1e33;
+    position: relative; overflow: hidden;
+  }
+  .mock-status {
+    background: #0a1628; padding: 6px 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 8px; color: rgba(255,255,255,0.4);
+  }
+  .mock-header {
+    padding: 8px 10px 6px;
+    font-family: 'Syne', sans-serif;
+    font-size: 10px; font-weight: 800;
+    color: white;
+  }
+  .mock-body { flex: 1; padding: 6px 8px; overflow: hidden; }
+  .mock-row {
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px; padding: 6px 8px;
+    margin-bottom: 5px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .mock-row .ml { font-size: 7px; color: rgba(255,255,255,0.7); font-weight: 600; }
+  .mock-row .mr { font-size: 7px; color: #4ade80; font-weight: 700; }
+  .mock-big {
+    background: linear-gradient(135deg, #00a651, #0070ba);
+    border-radius: 8px; padding: 8px;
+    margin-bottom: 6px; text-align: center;
+  }
+  .mock-big .mb-lbl { font-size: 7px; color: rgba(255,255,255,0.7); }
+  .mock-big .mb-val { font-size: 14px; font-weight: 800; color: white; font-family: 'Syne', sans-serif; }
+  .mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 5px; }
+  .mock-mini {
+    background: rgba(255,255,255,0.08);
+    border-radius: 6px; padding: 5px 6px; text-align: center;
+  }
+  .mock-mini .mml { font-size: 6px; color: rgba(255,255,255,0.5); }
+  .mock-mini .mmv { font-size: 9px; font-weight: 700; color: white; }
+  .mock-btn {
+    background: #00a651; border-radius: 6px;
+    padding: 5px; text-align: center;
+    font-size: 7px; font-weight: 700; color: white;
+    margin-top: 4px;
+  }
+  .mock-tag {
+    display: inline-block;
+    background: rgba(0,166,81,0.25); color: #4ade80;
+    border-radius: 4px; padding: 2px 5px;
+    font-size: 6px; font-weight: 700; margin-right: 3px; margin-bottom: 3px;
+  }
+  .screenshot-label {
+    padding: 10px 12px;
+    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.8);
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px; margin-top: 40px;
+  }
+  .who-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+  }
+  .who-card .who-icon { font-size: 32px; margin-bottom: 10px; }
+  .who-card h4 { font-size: 14px; font-weight: 700; color: var(--blue); }
+
+  /* ── OFFLINE BADGE ── */
+  .offline-section {
+    background: linear-gradient(135deg, var(--blue) 0%, #0d5c36 100%);
+    color: white;
+  }
+  .offline-inner {
+    max-width: 960px; margin: 0 auto;
+    display: flex; align-items: center; gap: 48px; flex-wrap: wrap;
+  }
+  .offline-text { flex: 1; min-width: 260px; }
+  .offline-text .section-title { color: white; }
+  .offline-text .section-sub { color: rgba(255,255,255,0.7); max-width: 100%; }
+  .offline-badges { display: flex; flex-direction: column; gap: 12px; flex: 1; min-width: 240px; }
+  .offline-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .offline-badge .icon { font-size: 24px; }
+  .offline-badge .txt strong { display: block; font-size: 14px; font-weight: 700; }
+  .offline-badge .txt span { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+  /* ── PRIVACY ── */
+  .privacy { background: white; }
+  .privacy-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin-top: 40px;
+  }
+  .privacy-box h3 {
+    font-size: 18px; font-weight: 700; color: var(--blue);
+    margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+  }
+  .privacy-box p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+  .privacy-box p:last-child { margin-bottom: 0; }
+  .privacy-box strong { color: var(--text); }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--bg); }
+  .contact-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px;
+    margin-top: 40px;
+    display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+  }
+  .contact-card .contact-icon { font-size: 48px; }
+  .contact-info h3 { font-size: 20px; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
+  .contact-info p { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+  .contact-info a {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-weight: 600; font-size: 14px;
+    padding: 8px 18px; border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .contact-info a:hover { background: #d0f0e2; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--blue);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 13px;
+  }
+  footer strong { color: white; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * { animation: fadeUp 0.6s ease both; }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-inner > *:nth-child(5) { animation-delay: 0.5s; }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-stats { gap: 24px; }
+    .offline-inner { flex-direction: column; }
+    .contact-card { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🧩 ByteKit<span class="dot"> PH</span></div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#screenshots">Screenshots</a></li>
+    <li><a href="#privacy">Privacy</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">📱 Now on Google Play Store</div>
+    <h1>Smart Sales & Inventory<br>for <span>Filipino Businesses</span></h1>
+    <p>ByteKit PH helps small business owners track sales, manage inventory, record expenses, and monitor e-services — all offline, right on your phone.</p>
+    <div class="hero-btns">
+      <a href="#features" class="btn-primary">✨ See Features</a>
+      <a href="#contact" class="btn-secondary">📩 Contact Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">100<span>%</span></div>
+        <div class="lbl">Offline</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num"><span>₱</span>0</div>
+        <div class="lbl">No Subscription</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">1<span>x</span></div>
+        <div class="lbl">One-Time Setup</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-label">What's inside</div>
+    <h2 class="section-title">Everything your small business needs</h2>
+    <p class="section-sub">Built specifically for sari-sari stores, retailers, and service providers in the Philippines.</p>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#eaf4fd;">🛒</div>
+        <h3>Point of Sale (POS)</h3>
+        <p>Fast checkout with barcode scanning, discounts, split payments, and official receipt generation.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#eafaf1;">📦</div>
+        <h3>Inventory Management</h3>
+        <p>Track stock levels, get low stock alerts, manage restocks, and monitor expiry dates.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#fef9e7;">💳</div>
+        <h3>E-Services Tracker</h3>
+        <p>Track GCash, Maya, Eload, Bills Payment, and Padala transactions with fee earnings per service.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#fdecea;">📊</div>
+        <h3>Sales Reports</h3>
+        <p>Daily, weekly, and monthly sales summaries with profit margins, COGS, and top-selling products.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#f5eef8;">👥</div>
+        <h3>Customer & Utang Tracking</h3>
+        <p>Manage customer accounts, track credit balances (utang), and record payments with full history.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#fff5e6;">💸</div>
+        <h3>Expenses & Draws</h3>
+        <p>Log daily expenses and owner's draws. See net profit after all outflows in the End of Day report.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#e8f8f0;">🌙</div>
+        <h3>End of Day Report</h3>
+        <p>Full closing report with cash drawer reconciliation, variance tracking, and printable summary.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#eaf4fd;">🔒</div>
+        <h3>PIN & Multi-Cashier</h3>
+        <p>Secure your app with a PIN, manage multiple cashier accounts, and track per-cashier performance.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#fef9e7;">🖨️</div>
+        <h3>Receipt Printing</h3>
+        <p>Print receipts via Bluetooth thermal printer. Customize with your store name, logo, and footer.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screenshots" id="screenshots">
+  <div class="section-inner">
+    <div class="section-label">App Preview</div>
+    <h2 class="section-title">See it in action</h2>
+    <p class="section-sub">A clean, fast interface designed for everyday use — even with one hand.</p>
+
+    <div class="screenshots-scroll">
+
+      <!-- POS Screen -->
+      <div class="screenshot-card">
+        <div class="screenshot-mock">
+          <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
+          <div class="mock-header" style="background:linear-gradient(135deg,#1e3a5f,#2980b9);">🛒 Point of Sale</div>
+          <div class="mock-body">
+            <div class="mock-row"><span class="ml">📦 Lucky Me Pancit</span><span class="mr">₱15.00</span></div>
+            <div class="mock-row"><span class="ml">🥤 Coke 1.5L</span><span class="mr">₱75.00</span></div>
+            <div class="mock-row"><span class="ml">🍫 Choco Butternut</span><span class="mr">₱12.00</span></div>
+            <div style="height:1px;background:rgba(255,255,255,0.1);margin:6px 0;"></div>
+            <div class="mock-row"><span class="ml" style="color:white;font-weight:700;">TOTAL</span><span class="mr" style="font-size:11px;">₱102.00</span></div>
+            <div class="mock-btn">✅ CHECKOUT</div>
+          </div>
+        </div>
+        <div class="screenshot-label">Point of Sale</div>
+      </div>
+
+      <!-- Dashboard / Reports -->
+      <div class="screenshot-card">
+        <div class="screenshot-mock">
+          <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
+          <div class="mock-header" style="background:linear-gradient(135deg,#27ae60,#1e8449);">📊 Sales Report</div>
+          <div class="mock-body">
+            <div class="mock-big">
+              <div class="mb-lbl">TODAY'S SALES</div>
+              <div class="mb-val">₱4,280.00</div>
+            </div>
+            <div class="mock-grid">
+              <div class="mock-mini"><div class="mml">PROFIT</div><div class="mmv" style="color:#4ade80;">₱1,540</div></div>
+              <div class="mock-mini"><div class="mml">ORDERS</div><div class="mmv">24</div></div>
+              <div class="mock-mini"><div class="mml">THIS WEEK</div><div class="mmv">₱18.2K</div></div>
+              <div class="mock-mini"><div class="mml">THIS MONTH</div><div class="mmv">₱64K</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-label">Sales Reports</div>
+      </div>
+
+      <!-- E-Services -->
+      <div class="screenshot-card">
+        <div class="screenshot-mock">
+          <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
+          <div class="mock-header" style="background:linear-gradient(135deg,#00a651,#0070ba);">💳 E-Services</div>
+          <div class="mock-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:6px;">
+              <div class="mock-mini" style="background:rgba(0,166,81,0.2);"><div class="mml">TODAY FEE</div><div class="mmv" style="color:#4ade80;">₱185</div></div>
+              <div class="mock-mini" style="background:rgba(41,128,185,0.2);"><div class="mml">TODAY AMT</div><div class="mmv" style="color:#60a5fa;">₱8,200</div></div>
+            </div>
+            <div style="font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:5px;font-weight:700;text-transform:uppercase;">Sales Dashboard</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+              <div class="mock-mini" style="background:rgba(0,166,81,0.15);"><div style="font-size:10px;">💚</div><div class="mml">GCash</div></div>
+              <div class="mock-mini" style="background:rgba(0,112,186,0.15);"><div style="font-size:10px;">💙</div><div class="mml">Maya</div></div>
+              <div class="mock-mini" style="background:rgba(142,68,173,0.15);"><div style="font-size:10px;">📱</div><div class="mml">Eload</div></div>
+              <div class="mock-mini" style="background:rgba(230,126,34,0.15);"><div style="font-size:10px;">🧾</div><div class="mml">Bills</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-label">E-Services Tracker</div>
+      </div>
+
+      <!-- Inventory -->
+      <div class="screenshot-card">
+        <div class="screenshot-mock">
+          <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
+          <div class="mock-header" style="background:linear-gradient(135deg,#8e44ad,#6c3483);">📦 Inventory</div>
+          <div class="mock-body">
+            <div class="mock-row"><span class="ml">Lucky Me Pancit Canton</span><span class="mr" style="color:#60a5fa;">42 pcs</span></div>
+            <div class="mock-row"><span class="ml">Coke Mismo 250ml</span><span class="mr" style="color:#60a5fa;">28 pcs</span></div>
+            <div class="mock-row" style="border-left:3px solid #f87171;"><span class="ml" style="color:#f87171;">⚠️ Tide Bar 130g</span><span class="mr" style="color:#f87171;">3 pcs</span></div>
+            <div class="mock-row"><span class="ml">Chippy BBQ 110g</span><span class="mr" style="color:#60a5fa;">15 pcs</span></div>
+            <div style="margin-top:4px;">
+              <span class="mock-tag">All</span>
+              <span class="mock-tag">Low Stock</span>
+              <span class="mock-tag">Expiring</span>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-label">Inventory</div>
+      </div>
+
+      <!-- End of Day -->
+      <div class="screenshot-card">
+        <div class="screenshot-mock">
+          <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
+          <div class="mock-header" style="background:#2c3e50;">🌙 End of Day</div>
+          <div class="mock-body">
+            <div class="mock-big" style="background:linear-gradient(135deg,#2c3e50,#1a252f);">
+              <div class="mb-lbl">NET PROFIT</div>
+              <div class="mb-val" style="color:#4ade80;">₱2,340.00</div>
+            </div>
+            <div class="mock-row"><span class="ml">Cash Sales</span><span class="mr" style="color:#60a5fa;">₱4,280</span></div>
+            <div class="mock-row"><span class="ml">E-Services Fees</span><span class="mr">₱185</span></div>
+            <div class="mock-row"><span class="ml">Expenses</span><span class="mr" style="color:#f87171;">-₱620</span></div>
+            <div class="mock-row"><span class="ml">Cash Variance</span><span class="mr" style="color:#4ade80;">+₱0.00</span></div>
+          </div>
+        </div>
+        <div class="screenshot-label">End of Day Report</div>
+      </div>
+
+      <!-- Customers -->
+      <div class="screenshot-card">
+        <div class="screenshot-mock">
+          <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
+          <div class="mock-header" style="background:linear-gradient(135deg,#e67e22,#d35400);">👥 Customers</div>
+          <div class="mock-body">
+            <div class="mock-row"><span class="ml">👤 Maria Santos</span><span class="mr" style="color:#f87171;">₱120 utang</span></div>
+            <div class="mock-row"><span class="ml">👤 Juan dela Cruz</span><span class="mr" style="color:#4ade80;">₱0</span></div>
+            <div class="mock-row"><span class="ml">👤 Ana Reyes</span><span class="mr" style="color:#f87171;">₱350 utang</span></div>
+            <div class="mock-row"><span class="ml">👤 Pedro Bautista</span><span class="mr" style="color:#4ade80;">₱0</span></div>
+            <div class="mock-btn" style="background:#e67e22;">➕ Add Customer</div>
+          </div>
+        </div>
+        <div class="screenshot-label">Utang Tracker</div>
+      </div>
+
+    </div>
+    <p style="text-align:center;font-size:12px;color:rgba(255,255,255,0.35);margin-top:8px;">← Swipe to see more screens →</p>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="forwho">
+  <div class="section-inner">
+    <div class="section-label">Perfect for</div>
+    <h2 class="section-title">Built for Filipino small businesses</h2>
+    <div class="who-grid">
+      <div class="who-card"><div class="who-icon">🏪</div><h4>Sari-Sari Stores</h4></div>
+      <div class="who-card"><div class="who-icon">📱</div><h4>Load & E-Services</h4></div>
+      <div class="who-card"><div class="who-icon">🍱</div><h4>Carinderia / Eateries</h4></div>
+      <div class="who-card"><div class="who-icon">💇</div><h4>Salons & Services</h4></div>
+      <div class="who-card"><div class="who-icon">🛍️</div><h4>Retail Shops</h4></div>
+      <div class="who-card"><div class="who-icon">🏠</div><h4>Home-Based Sellers</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFLINE -->
+<section class="offline-section">
+  <div class="offline-inner">
+    <div class="offline-text">
+      <div class="section-label" style="color:#4ade80;">Why ByteKit PH</div>
+      <h2 class="section-title">Works without internet.<br>Always.</h2>
+      <p class="section-sub">No monthly fees. No cloud required. Your data stays on your phone — private, fast, and always accessible even without signal.</p>
+    </div>
+    <div class="offline-badges">
+      <div class="offline-badge">
+        <div class="icon">📴</div>
+        <div class="txt"><strong>100% Offline</strong><span>No internet needed to use the app</span></div>
+      </div>
+      <div class="offline-badge">
+        <div class="icon">📱</div>
+        <div class="txt"><strong>Data on Your Device</strong><span>Nothing is sent to any server</span></div>
+      </div>
+      <div class="offline-badge">
+        <div class="icon">💰</div>
+        <div class="txt"><strong>No Subscription</strong><span>One-time — no monthly fees ever</span></div>
+      </div>
+      <div class="offline-badge">
+        <div class="icon">🔒</div>
+        <div class="txt"><strong>Your Data is Private</strong><span>We never collect or share your data</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section class="privacy" id="privacy">
+  <div class="section-inner">
+    <div class="section-label">Privacy Policy</div>
+    <h2 class="section-title">Your data belongs to you</h2>
+    <p class="section-sub">Last updated: March 2026</p>
+
+    <div class="privacy-box">
+      <h3>📋 Privacy Policy — ByteKit PH</h3>
+
+      <p><strong>ByteKit PH</strong> ("the App") is a sales and inventory tracking application developed for Android devices. This privacy policy explains how the App handles your information.</p>
+
+      <p><strong>Data Collection:</strong> ByteKit PH does <strong>not collect, transmit, or share any personal data</strong>. The App operates entirely offline. All data you enter — including products, sales, customer records, and transactions — is stored <strong>locally on your device only</strong> and is never sent to any external server, cloud service, or third party.</p>
+
+      <p><strong>Internet Access:</strong> The App does <strong>not require internet access</strong> to function. No network requests are made during normal use of the App.</p>
+
+      <p><strong>Device Storage:</strong> The App stores data on your device's local storage. This data is only accessible within the App and is removed when you uninstall the App or choose to reset the data from within the App settings.</p>
+
+      <p><strong>Third-Party Services:</strong> ByteKit PH does not integrate with any third-party analytics, advertising, or tracking services.</p>
+
+      <p><strong>Children's Privacy:</strong> The App is intended for use by adults operating small businesses. It is not directed at children under 13 years of age.</p>
+
+      <p><strong>Changes to This Policy:</strong> Any updates to this privacy policy will be reflected on this page with an updated date.</p>
+
+      <p><strong>Contact:</strong> If you have questions about this privacy policy, please contact us at <a href="mailto:bytekitph@gmail.com" style="color:var(--green);font-weight:600;">bytekitph@gmail.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Support & Contact</h2>
+    <p class="section-sub">Have questions about the app or need help? We're here for you.</p>
+
+    <div class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-info">
+        <h3>ByteKit PH Support</h3>
+        <p>For app support, bug reports, feature requests, or any questions — send us an email and we'll get back to you as soon as possible.</p>
+        <a href="mailto:bytekitph@gmail.com">📧 bytekitph@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <strong>ByteKit PH</strong>. All rights reserved. · Built for Filipino small businesses 🇵🇭</p>
+  <p style="margin-top:6px;font-size:12px;"><a href="#privacy" style="color:rgba(255,255,255,0.5);text-decoration:none;">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>
