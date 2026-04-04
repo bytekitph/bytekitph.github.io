@@ -410,7 +410,7 @@
     <h1>Smart Sales & Inventory<br>for <span>Filipino Businesses</span></h1>
     <p>ByteKit PH helps small business owners track sales, manage inventory, record expenses, and monitor e-services — all offline, right on your phone.</p>
     <div class="hero-btns">
-      <a href="#features" class="btn-primary">✨ See Features</a>
+      <a href="https://play.google.com/store/apps/details?id=com.bytekitpos.app" class="btn-primary" target="_blank">▶ Download on Google Play</a>
       <a href="#contact" class="btn-secondary">📩 Contact Us</a>
     </div>
     <div class="hero-stats">
@@ -506,116 +506,254 @@
 
     <div class="screenshots-scroll">
 
-      <!-- POS Screen -->
+      <!-- POS Screen — matches real app -->
       <div class="screenshot-card">
         <div class="screenshot-mock">
           <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
-          <div class="mock-header" style="background:linear-gradient(135deg,#1e3a5f,#2980b9);">🛒 Point of Sale</div>
-          <div class="mock-body">
-            <div class="mock-row"><span class="ml">📦 Lucky Me Pancit</span><span class="mr">₱15.00</span></div>
-            <div class="mock-row"><span class="ml">🥤 Coke 1.5L</span><span class="mr">₱75.00</span></div>
-            <div class="mock-row"><span class="ml">🍫 Choco Butternut</span><span class="mr">₱12.00</span></div>
-            <div style="height:1px;background:rgba(255,255,255,0.1);margin:6px 0;"></div>
-            <div class="mock-row"><span class="ml" style="color:white;font-weight:700;">TOTAL</span><span class="mr" style="font-size:11px;">₱102.00</span></div>
-            <div class="mock-btn">✅ CHECKOUT</div>
+          <!-- Real app header: dark blue gradient -->
+          <div style="background:linear-gradient(135deg,#1e3a5f 0%,#2d5282 100%);padding:8px 10px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:9px;font-weight:800;color:white;letter-spacing:1px;">ALING NENA'S STORE</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.6);">🛒</span>
+          </div>
+          <!-- Search bar -->
+          <div style="background:#f1f5f9;margin:5px;border-radius:6px;padding:4px 8px;font-size:7px;color:#94a3b8;">🔍 Search or scan item...</div>
+          <!-- Cart items — real app style -->
+          <div style="flex:1;padding:0 5px;overflow:hidden;">
+            <div style="background:#1e3a5f;padding:4px 8px;border-radius:6px 6px 0 0;display:flex;justify-content:space-between;margin-top:2px;">
+              <span style="font-size:7px;color:white;font-weight:700;">🛒 CART</span>
+              <span style="font-size:7px;color:rgba(255,255,255,0.6);">3 items</span>
+            </div>
+            <div style="background:white;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 6px 6px;padding:4px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f1f5f9;">
+                <div><div style="font-size:7px;font-weight:600;color:#1e3a5f;">Lucky Me Pancit Canton</div><div style="font-size:6px;color:#94a3b8;">₱15.00 × 2</div></div>
+                <span style="font-size:8px;font-weight:700;color:#3b82f6;">₱30.00</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f1f5f9;">
+                <div><div style="font-size:7px;font-weight:600;color:#1e3a5f;">Coke Mismo 250ml</div><div style="font-size:6px;color:#94a3b8;">₱18.00 × 1</div></div>
+                <span style="font-size:8px;font-weight:700;color:#3b82f6;">₱18.00</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;">
+                <div><div style="font-size:7px;font-weight:600;color:#1e3a5f;">Chippy BBQ 110g</div><div style="font-size:6px;color:#94a3b8;">₱22.00 × 1</div></div>
+                <span style="font-size:8px;font-weight:700;color:#3b82f6;">₱22.00</span>
+              </div>
+            </div>
+            <!-- Total + checkout -->
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:0 0 6px 6px;padding:5px 8px;margin-top:2px;">
+              <div style="display:flex;justify-content:space-between;font-size:8px;color:#64748b;margin-bottom:2px;"><span>Subtotal</span><span>₱70.00</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:10px;font-weight:800;color:#1e3a5f;border-top:1px solid #e2e8f0;padding-top:3px;margin-bottom:5px;"><span>TOTAL</span><span>₱70.00</span></div>
+              <div style="background:#10b981;border-radius:5px;padding:5px;text-align:center;font-size:8px;font-weight:700;color:white;">✅ CHECKOUT</div>
+            </div>
           </div>
         </div>
         <div class="screenshot-label">Point of Sale</div>
       </div>
 
-      <!-- Dashboard / Reports -->
+      <!-- Dashboard -->
       <div class="screenshot-card">
         <div class="screenshot-mock">
           <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
-          <div class="mock-header" style="background:linear-gradient(135deg,#27ae60,#1e8449);">📊 Sales Report</div>
-          <div class="mock-body">
-            <div class="mock-big">
-              <div class="mb-lbl">TODAY'S SALES</div>
-              <div class="mb-val">₱4,280.00</div>
+          <div style="background:linear-gradient(135deg,#1e3a5f 0%,#2d5282 100%);padding:8px 10px;">
+            <span style="font-size:9px;font-weight:800;color:white;letter-spacing:1px;">ALING NENA'S STORE</span>
+          </div>
+          <div style="flex:1;padding:5px;overflow:hidden;background:#f0f4f8;">
+            <!-- Today sales card -->
+            <div style="background:linear-gradient(135deg,#27ae60,#229954);border-radius:8px;padding:8px;margin-bottom:4px;text-align:center;">
+              <div style="font-size:6px;color:rgba(255,255,255,0.8);font-weight:700;text-transform:uppercase;">TODAY'S SALES</div>
+              <div style="font-size:16px;font-weight:800;color:white;">₱4,280.00</div>
+              <div style="font-size:6px;color:rgba(255,255,255,0.7);">Margin: 36.0%</div>
             </div>
-            <div class="mock-grid">
-              <div class="mock-mini"><div class="mml">PROFIT</div><div class="mmv" style="color:#4ade80;">₱1,540</div></div>
-              <div class="mock-mini"><div class="mml">ORDERS</div><div class="mmv">24</div></div>
-              <div class="mock-mini"><div class="mml">THIS WEEK</div><div class="mmv">₱18.2K</div></div>
-              <div class="mock-mini"><div class="mml">THIS MONTH</div><div class="mmv">₱64K</div></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px;">
+              <div style="background:white;border-radius:6px;padding:5px;text-align:center;border:1px solid #e2e8f0;">
+                <div style="font-size:6px;color:#94a3b8;font-weight:700;">TODAY PROFIT</div>
+                <div style="font-size:9px;font-weight:800;color:#27ae60;">₱1,540</div>
+              </div>
+              <div style="background:white;border-radius:6px;padding:5px;text-align:center;border:1px solid #e2e8f0;">
+                <div style="font-size:6px;color:#94a3b8;font-weight:700;">TRANSACTIONS</div>
+                <div style="font-size:9px;font-weight:800;color:#1e3a5f;">24</div>
+              </div>
+              <div style="background:white;border-radius:6px;padding:5px;text-align:center;border:1px solid #e2e8f0;">
+                <div style="font-size:6px;color:#94a3b8;font-weight:700;">THIS WEEK</div>
+                <div style="font-size:9px;font-weight:800;color:#2980b9;">₱18.2K</div>
+              </div>
+              <div style="background:white;border-radius:6px;padding:5px;text-align:center;border:1px solid #e2e8f0;">
+                <div style="font-size:6px;color:#94a3b8;font-weight:700;">THIS MONTH</div>
+                <div style="font-size:9px;font-weight:800;color:#8e44ad;">₱64K</div>
+              </div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:5px;border:1px solid #e2e8f0;">
+              <div style="font-size:6px;color:#94a3b8;font-weight:700;margin-bottom:3px;">⚠️ LOW STOCK ALERT</div>
+              <div style="font-size:7px;color:#e74c3c;font-weight:600;">Tide Bar 130g — 3 pcs left</div>
+              <div style="font-size:7px;color:#e74c3c;font-weight:600;">Del Monte Ketchup — 2 pcs left</div>
             </div>
           </div>
         </div>
-        <div class="screenshot-label">Sales Reports</div>
+        <div class="screenshot-label">Dashboard</div>
       </div>
 
-      <!-- E-Services -->
+      <!-- Inventory — real app grid view -->
       <div class="screenshot-card">
         <div class="screenshot-mock">
           <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
-          <div class="mock-header" style="background:linear-gradient(135deg,#00a651,#0070ba);">💳 E-Services</div>
-          <div class="mock-body">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:6px;">
-              <div class="mock-mini" style="background:rgba(0,166,81,0.2);"><div class="mml">TODAY FEE</div><div class="mmv" style="color:#4ade80;">₱185</div></div>
-              <div class="mock-mini" style="background:rgba(41,128,185,0.2);"><div class="mml">TODAY AMT</div><div class="mmv" style="color:#60a5fa;">₱8,200</div></div>
+          <div style="background:linear-gradient(135deg,#1e3a5f 0%,#2d5282 100%);padding:8px 10px;">
+            <span style="font-size:9px;font-weight:800;color:white;letter-spacing:1px;">INVENTORY</span>
+          </div>
+          <div style="flex:1;padding:4px;overflow:hidden;background:#f0f4f8;">
+            <!-- Filter tabs -->
+            <div style="display:flex;gap:3px;margin-bottom:4px;">
+              <span style="background:#1e3a5f;color:white;border-radius:4px;padding:2px 5px;font-size:6px;font-weight:700;">All</span>
+              <span style="background:white;color:#64748b;border-radius:4px;padding:2px 5px;font-size:6px;border:1px solid #e2e8f0;">Low Stock</span>
+              <span style="background:white;color:#64748b;border-radius:4px;padding:2px 5px;font-size:6px;border:1px solid #e2e8f0;">Expiring</span>
             </div>
-            <div style="font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:5px;font-weight:700;text-transform:uppercase;">Sales Dashboard</div>
+            <!-- Product grid — 2 columns like real app -->
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
-              <div class="mock-mini" style="background:rgba(0,166,81,0.15);"><div style="font-size:10px;">💚</div><div class="mml">GCash</div></div>
-              <div class="mock-mini" style="background:rgba(0,112,186,0.15);"><div style="font-size:10px;">💙</div><div class="mml">Maya</div></div>
-              <div class="mock-mini" style="background:rgba(142,68,173,0.15);"><div style="font-size:10px;">📱</div><div class="mml">Eload</div></div>
-              <div class="mock-mini" style="background:rgba(230,126,34,0.15);"><div style="font-size:10px;">🧾</div><div class="mml">Bills</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="screenshot-label">E-Services Tracker</div>
-      </div>
-
-      <!-- Inventory -->
-      <div class="screenshot-card">
-        <div class="screenshot-mock">
-          <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
-          <div class="mock-header" style="background:linear-gradient(135deg,#8e44ad,#6c3483);">📦 Inventory</div>
-          <div class="mock-body">
-            <div class="mock-row"><span class="ml">Lucky Me Pancit Canton</span><span class="mr" style="color:#60a5fa;">42 pcs</span></div>
-            <div class="mock-row"><span class="ml">Coke Mismo 250ml</span><span class="mr" style="color:#60a5fa;">28 pcs</span></div>
-            <div class="mock-row" style="border-left:3px solid #f87171;"><span class="ml" style="color:#f87171;">⚠️ Tide Bar 130g</span><span class="mr" style="color:#f87171;">3 pcs</span></div>
-            <div class="mock-row"><span class="ml">Chippy BBQ 110g</span><span class="mr" style="color:#60a5fa;">15 pcs</span></div>
-            <div style="margin-top:4px;">
-              <span class="mock-tag">All</span>
-              <span class="mock-tag">Low Stock</span>
-              <span class="mock-tag">Expiring</span>
+              <div style="background:white;border-radius:8px;border:1px solid #e2e8f0;overflow:hidden;">
+                <div style="background:#ecf0f1;height:36px;display:flex;align-items:center;justify-content:center;font-size:16px;">📦</div>
+                <div style="padding:4px;">
+                  <div style="font-size:7px;font-weight:700;color:#1e3a5f;">Lucky Me Pancit</div>
+                  <div style="font-size:8px;font-weight:800;color:#10b981;">₱15.00</div>
+                  <div style="font-size:6px;color:#94a3b8;">Stock: 42 pcs</div>
+                </div>
+              </div>
+              <div style="background:white;border-radius:8px;border:1px solid #e2e8f0;overflow:hidden;">
+                <div style="background:#ecf0f1;height:36px;display:flex;align-items:center;justify-content:center;font-size:16px;">🥤</div>
+                <div style="padding:4px;">
+                  <div style="font-size:7px;font-weight:700;color:#1e3a5f;">Coke Mismo 250ml</div>
+                  <div style="font-size:8px;font-weight:800;color:#10b981;">₱18.00</div>
+                  <div style="font-size:6px;color:#94a3b8;">Stock: 28 pcs</div>
+                </div>
+              </div>
+              <div style="background:white;border-radius:8px;border:1px solid #ffebee;overflow:hidden;">
+                <div style="background:#ffebee;height:36px;display:flex;align-items:center;justify-content:center;font-size:16px;">⚠️</div>
+                <div style="padding:4px;">
+                  <div style="font-size:7px;font-weight:700;color:#e74c3c;">Tide Bar 130g</div>
+                  <div style="font-size:8px;font-weight:800;color:#10b981;">₱28.00</div>
+                  <div style="font-size:6px;color:#e74c3c;font-weight:700;">Stock: 3 pcs ⚠️</div>
+                </div>
+              </div>
+              <div style="background:white;border-radius:8px;border:1px solid #e2e8f0;overflow:hidden;">
+                <div style="background:#ecf0f1;height:36px;display:flex;align-items:center;justify-content:center;font-size:16px;">🍫</div>
+                <div style="padding:4px;">
+                  <div style="font-size:7px;font-weight:700;color:#1e3a5f;">Chippy BBQ 110g</div>
+                  <div style="font-size:8px;font-weight:800;color:#10b981;">₱22.00</div>
+                  <div style="font-size:6px;color:#94a3b8;">Stock: 15 pcs</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="screenshot-label">Inventory</div>
       </div>
 
-      <!-- End of Day -->
+      <!-- E-Services — real app style -->
       <div class="screenshot-card">
         <div class="screenshot-mock">
           <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
-          <div class="mock-header" style="background:#2c3e50;">🌙 End of Day</div>
-          <div class="mock-body">
-            <div class="mock-big" style="background:linear-gradient(135deg,#2c3e50,#1a252f);">
-              <div class="mb-lbl">NET PROFIT</div>
-              <div class="mb-val" style="color:#4ade80;">₱2,340.00</div>
+          <div style="background:linear-gradient(135deg,#1e3a5f 0%,#2d5282 100%);padding:8px 10px;">
+            <span style="font-size:9px;font-weight:800;color:white;letter-spacing:1px;">E-SERVICES</span>
+          </div>
+          <div style="flex:1;padding:5px;overflow:hidden;background:#f0f4f8;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px;">
+              <div style="background:white;border-radius:6px;padding:5px;text-align:center;border:1px solid #e2e8f0;">
+                <div style="font-size:6px;color:#94a3b8;font-weight:700;">TODAY FEES</div>
+                <div style="font-size:11px;font-weight:800;color:#00a651;">₱185.00</div>
+              </div>
+              <div style="background:white;border-radius:6px;padding:5px;text-align:center;border:1px solid #e2e8f0;">
+                <div style="font-size:6px;color:#94a3b8;font-weight:700;">TRANSACTIONS</div>
+                <div style="font-size:11px;font-weight:800;color:#2980b9;">12</div>
+              </div>
             </div>
-            <div class="mock-row"><span class="ml">Cash Sales</span><span class="mr" style="color:#60a5fa;">₱4,280</span></div>
-            <div class="mock-row"><span class="ml">E-Services Fees</span><span class="mr">₱185</span></div>
-            <div class="mock-row"><span class="ml">Expenses</span><span class="mr" style="color:#f87171;">-₱620</span></div>
-            <div class="mock-row"><span class="ml">Cash Variance</span><span class="mr" style="color:#4ade80;">+₱0.00</span></div>
+            <!-- Service rows -->
+            <div style="background:white;border-radius:6px;padding:5px;border:1px solid #e2e8f0;">
+              <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f1f5f9;align-items:center;">
+                <span style="font-size:7px;color:#1e3a5f;">💚 GCash Cash-In</span>
+                <div style="text-align:right;"><div style="font-size:7px;color:#2980b9;font-weight:700;">₱3,500</div><div style="font-size:6px;color:#00a651;">+₱35 fee</div></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f1f5f9;align-items:center;">
+                <span style="font-size:7px;color:#1e3a5f;">💙 Maya Cash-Out</span>
+                <div style="text-align:right;"><div style="font-size:7px;color:#2980b9;font-weight:700;">₱2,000</div><div style="font-size:6px;color:#00a651;">+₱20 fee</div></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f1f5f9;align-items:center;">
+                <span style="font-size:7px;color:#1e3a5f;">📱 Eload</span>
+                <div style="text-align:right;"><div style="font-size:7px;color:#2980b9;font-weight:700;">₱500</div><div style="font-size:6px;color:#00a651;">+₱15 fee</div></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:3px 0;align-items:center;">
+                <span style="font-size:7px;color:#1e3a5f;">🧾 Bills Payment</span>
+                <div style="text-align:right;"><div style="font-size:7px;color:#2980b9;font-weight:700;">₱1,200</div><div style="font-size:6px;color:#00a651;">+₱15 fee</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screenshot-label">E-Services Tracker</div>
+      </div>
+
+      <!-- End of Day — real app style -->
+      <div class="screenshot-card">
+        <div class="screenshot-mock">
+          <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
+          <div style="background:#2c3e50;padding:8px 10px;">
+            <div style="font-size:7px;color:rgba(255,255,255,0.6);">End of Day Report</div>
+            <div style="font-size:9px;font-weight:800;color:white;">Wednesday, April 2, 2026</div>
+          </div>
+          <div style="flex:1;padding:0;overflow:hidden;background:#f0f4f8;">
+            <!-- Sales summary -->
+            <div style="padding:5px;border-bottom:1px solid #e2e8f0;background:white;">
+              <div style="font-size:6px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:4px;">💰 Sales Summary</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;">
+                <div style="background:#eaf4fd;border-radius:5px;padding:4px;text-align:center;">
+                  <div style="font-size:6px;color:#94a3b8;">CASH SALES</div>
+                  <div style="font-size:9px;font-weight:800;color:#2980b9;">₱4,280</div>
+                </div>
+                <div style="background:#eafaf1;border-radius:5px;padding:4px;text-align:center;">
+                  <div style="font-size:6px;color:#94a3b8;">GROSS PROFIT</div>
+                  <div style="font-size:9px;font-weight:800;color:#27ae60;">₱1,540</div>
+                </div>
+              </div>
+            </div>
+            <!-- Net profit -->
+            <div style="padding:6px 5px;background:#eafaf1;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:8px;font-weight:700;color:#1e3a5f;">Net Profit</span>
+              <span style="font-size:13px;font-weight:800;color:#27ae60;">₱2,340.00</span>
+            </div>
+            <!-- Drawer -->
+            <div style="padding:5px;background:white;">
+              <div style="font-size:6px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:3px;">🏦 Cash Drawer</div>
+              <div style="display:flex;justify-content:space-between;font-size:7px;margin-bottom:2px;"><span style="color:#64748b;">Expected</span><span style="font-weight:700;">₱5,840.00</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:7px;margin-bottom:2px;"><span style="color:#64748b;">Actual Count</span><span style="font-weight:700;">₱5,840.00</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:7px;border-top:1px dashed #e2e8f0;padding-top:3px;margin-top:2px;"><span style="color:#64748b;">Variance</span><span style="font-weight:800;color:#27ae60;">+₱0.00 ✅</span></div>
+            </div>
           </div>
         </div>
         <div class="screenshot-label">End of Day Report</div>
       </div>
 
-      <!-- Customers -->
+      <!-- Utang Tracker — real app style -->
       <div class="screenshot-card">
         <div class="screenshot-mock">
           <div class="mock-status"><span>9:41</span><span>● 5G 🔋</span></div>
-          <div class="mock-header" style="background:linear-gradient(135deg,#e67e22,#d35400);">👥 Customers</div>
-          <div class="mock-body">
-            <div class="mock-row"><span class="ml">👤 Maria Santos</span><span class="mr" style="color:#f87171;">₱120 utang</span></div>
-            <div class="mock-row"><span class="ml">👤 Juan dela Cruz</span><span class="mr" style="color:#4ade80;">₱0</span></div>
-            <div class="mock-row"><span class="ml">👤 Ana Reyes</span><span class="mr" style="color:#f87171;">₱350 utang</span></div>
-            <div class="mock-row"><span class="ml">👤 Pedro Bautista</span><span class="mr" style="color:#4ade80;">₱0</span></div>
-            <div class="mock-btn" style="background:#e67e22;">➕ Add Customer</div>
+          <div style="background:linear-gradient(135deg,#1e3a5f 0%,#2d5282 100%);padding:8px 10px;">
+            <span style="font-size:9px;font-weight:800;color:white;letter-spacing:1px;">CUSTOMERS</span>
+          </div>
+          <div style="flex:1;padding:5px;overflow:hidden;background:#f0f4f8;">
+            <!-- Total utang card -->
+            <div style="background:white;border-radius:6px;padding:5px;border:1px solid #e2e8f0;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:6px;color:#94a3b8;font-weight:700;">TOTAL UTANG</span>
+              <span style="font-size:11px;font-weight:800;color:#e74c3c;">₱1,240.00</span>
+            </div>
+            <!-- Customer rows -->
+            <div style="display:flex;flex-direction:column;gap:3px;">
+              <div style="background:white;border-radius:6px;padding:5px 6px;border:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;">
+                <div><div style="font-size:7px;font-weight:700;color:#1e3a5f;">👤 Maria Santos</div><div style="font-size:6px;color:#94a3b8;">Last: 3 days ago</div></div>
+                <span style="background:#fef2f2;color:#dc2626;border-radius:4px;padding:2px 5px;font-size:7px;font-weight:700;">₱350</span>
+              </div>
+              <div style="background:white;border-radius:6px;padding:5px 6px;border:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;">
+                <div><div style="font-size:7px;font-weight:700;color:#1e3a5f;">👤 Juan dela Cruz</div><div style="font-size:6px;color:#94a3b8;">Last: today</div></div>
+                <span style="background:#fef2f2;color:#dc2626;border-radius:4px;padding:2px 5px;font-size:7px;font-weight:700;">₱120</span>
+              </div>
+              <div style="background:white;border-radius:6px;padding:5px 6px;border:1px solid #ecfdf5;display:flex;justify-content:space-between;align-items:center;">
+                <div><div style="font-size:7px;font-weight:700;color:#1e3a5f;">👤 Ana Reyes</div><div style="font-size:6px;color:#94a3b8;">Fully paid ✅</div></div>
+                <span style="background:#ecfdf5;color:#059669;border-radius:4px;padding:2px 5px;font-size:7px;font-weight:700;">₱0</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="screenshot-label">Utang Tracker</div>
@@ -680,22 +818,21 @@
 
     <div class="privacy-box">
       <h3>📋 Privacy Policy — ByteKit PH</h3>
+      <p style="font-size:12px;color:#94a3b8;margin-bottom:16px;">Effective Date: April 2, 2026 &nbsp;·&nbsp; <a href="privacy-policy.html" style="color:var(--green);">View full policy →</a></p>
 
-      <p><strong>ByteKit PH</strong> ("the App") is a sales and inventory tracking application developed for Android devices. This privacy policy explains how the App handles your information.</p>
+      <p><strong>ByteKit PH</strong> is a sales and inventory tracking application for Android. This policy explains how your information is handled.</p>
 
-      <p><strong>Data Collection:</strong> ByteKit PH does <strong>not collect, transmit, or share any personal data</strong>. The App operates entirely offline. All data you enter — including products, sales, customer records, and transactions — is stored <strong>locally on your device only</strong> and is never sent to any external server, cloud service, or third party.</p>
+      <p><strong>📦 Your Business Data:</strong> All data you enter — products, sales, customers, expenses — is stored <strong>locally on your device only</strong>. It is never sent to ByteKit PH or any third party.</p>
 
-      <p><strong>Internet Access:</strong> The App does <strong>not require internet access</strong> to function. No network requests are made during normal use of the App.</p>
+      <p><strong>🌐 Internet Access:</strong> The App uses internet only for <strong>license verification</strong> — to activate your access code and confirm it is valid. This communicates only with a private, secure repository. No personal or business data is transmitted. The App works fully offline after activation.</p>
 
-      <p><strong>Device Storage:</strong> The App stores data on your device's local storage. This data is only accessible within the App and is removed when you uninstall the App or choose to reset the data from within the App settings.</p>
+      <p><strong>📷 Camera:</strong> Used only for barcode scanning and product photos. Never used in the background. No images are uploaded to any server.</p>
 
-      <p><strong>Third-Party Services:</strong> ByteKit PH does not integrate with any third-party analytics, advertising, or tracking services.</p>
+      <p><strong>📱 Device ID:</strong> Your device's anonymous Android ID is used only to bind your license to your device. It is not linked to your name, Google account, or any personal information.</p>
 
-      <p><strong>Children's Privacy:</strong> The App is intended for use by adults operating small businesses. It is not directed at children under 13 years of age.</p>
+      <p><strong>👶 Children's Privacy:</strong> The App is intended for adults operating small businesses. It is not directed at children under 13.</p>
 
-      <p><strong>Changes to This Policy:</strong> Any updates to this privacy policy will be reflected on this page with an updated date.</p>
-
-      <p><strong>Contact:</strong> If you have questions about this privacy policy, please contact us at <a href="mailto:bytekitph@gmail.com" style="color:var(--green);font-weight:600;">bytekitph@gmail.com</a></p>
+      <p><strong>Contact:</strong> Questions? Email us at <a href="mailto:bytekitph@gmail.com" style="color:var(--green);font-weight:600;">bytekitph@gmail.com</a> or message us on <a href="https://www.facebook.com/profile.php?id=61575141544282" style="color:var(--green);font-weight:600;">Facebook</a>.</p>
     </div>
   </div>
 </section>
@@ -711,8 +848,9 @@
       <div class="contact-icon">✉️</div>
       <div class="contact-info">
         <h3>ByteKit PH Support</h3>
-        <p>For app support, bug reports, feature requests, or any questions — send us an email and we'll get back to you as soon as possible.</p>
-        <a href="mailto:bytekitph@gmail.com">📧 bytekitph@gmail.com</a>
+        <p>For app support, bug reports, feature requests, or any questions — reach us via email or Facebook and we'll get back to you as soon as possible.</p>
+        <a href="mailto:bytekitph@gmail.com" style="margin-right:8px;">📧 bytekitph@gmail.com</a>
+        <a href="https://www.facebook.com/profile.php?id=61575141544282">💬 Message on Facebook</a>
       </div>
     </div>
   </div>
@@ -720,8 +858,14 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 <strong>ByteKit PH</strong>. All rights reserved. · Built for Filipino small businesses 🇵🇭</p>
-  <p style="margin-top:6px;font-size:12px;"><a href="#privacy" style="color:rgba(255,255,255,0.5);text-decoration:none;">Privacy Policy</a></p>
+  <p>© 2026 <strong>ByteKit PH</strong> · Natividad, Pangasinan, Philippines</p>
+  <p style="margin-top:6px;font-size:12px;">
+    <a href="privacy-policy.html" style="color:rgba(255,255,255,0.5);text-decoration:none;">Privacy Policy</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:bytekitph@gmail.com" style="color:rgba(255,255,255,0.5);text-decoration:none;">bytekitph@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.facebook.com/profile.php?id=61575141544282" style="color:rgba(255,255,255,0.5);text-decoration:none;">Facebook</a>
+  </p>
 </footer>
 
 </body>
