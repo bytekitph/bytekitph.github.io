@@ -58,6 +58,18 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--green); }
+  .nav-download {
+    background: var(--green);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: background 0.2s, transform 0.15s !important;
+    box-shadow: 0 2px 10px rgba(0,166,81,0.3);
+  }
+  .nav-download:hover { background: var(--green-dark) !important; color: white !important; transform: translateY(-1px); }
 
   /* ── HERO ── */
   .hero {
@@ -294,6 +306,77 @@
   .who-card .who-icon { font-size: 32px; margin-bottom: 10px; }
   .who-card h4 { font-size: 14px; font-weight: 700; color: var(--blue); }
 
+  /* ── SHOPEE PICKS ── */
+  .shopee-section { background: var(--bg); }
+  .shopee-section .section-label { color: #ee4d2d; }
+  .shopee-carousel-wrap { position: relative; margin-top: 40px; }
+  .shopee-carousel {
+    display: flex; gap: 16px;
+    overflow-x: auto;
+    padding: 8px 4px 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #ee4d2d22 transparent;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  .shopee-carousel::-webkit-scrollbar { height: 4px; }
+  .shopee-carousel::-webkit-scrollbar-track { background: transparent; }
+  .shopee-carousel::-webkit-scrollbar-thumb { background: #ee4d2d44; border-radius: 4px; }
+  .shopee-card {
+    flex-shrink: 0;
+    width: 200px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: flex; flex-direction: column;
+  }
+  .shopee-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.10); }
+  .shopee-card-img {
+    width: 100%; aspect-ratio: 1/1;
+    background: #f3f4f6;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .shopee-card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .shopee-badge {
+    position: absolute; top: 8px; left: 8px;
+    background: #ee4d2d; color: white;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .shopee-card-body { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .shopee-card-name { font-size: 13px; font-weight: 600; color: var(--blue); line-height: 1.4; }
+  .shopee-card-price { font-size: 16px; font-weight: 800; color: #ee4d2d; }
+  .shopee-card-price small { font-size: 11px; font-weight: 400; color: var(--muted); text-decoration: line-through; margin-left: 4px; }
+  .shopee-card-cta {
+    margin-top: auto;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    background: #ee4d2d;
+    color: white;
+    font-size: 12px; font-weight: 700;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .shopee-card:hover .shopee-card-cta { background: #c73d22; }
+  .shopee-scroll-hint {
+    text-align: center; font-size: 12px;
+    color: var(--muted); margin-top: 4px;
+  }
+  .shopee-disclaimer {
+    font-size: 11px; color: var(--muted);
+    margin-top: 16px; text-align: center;
+    opacity: 0.7;
+  }
+
   /* ── OFFLINE BADGE ── */
   .offline-section {
     background: linear-gradient(135deg, var(--blue) 0%, #0d5c36 100%);
@@ -397,8 +480,10 @@
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
     <li><a href="#screenshots">Screenshots</a></li>
+    <!-- <li><a href="#shopee">Shopee Picks</a></li> -->
     <li><a href="#privacy">Privacy</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="https://play.google.com/store/apps/details?id=com.bytekitpos.app" class="nav-download" target="_blank">▶ Download</a></li>
   </ul>
 </nav>
 
@@ -780,6 +865,101 @@
   </div>
 </section>
 
+<!-- SHOPEE PICKS
+
+<section class="shopee-section" id="shopee">
+  <div class="section-inner">
+    <div class="section-label">🛍️ Shopee Picks</div>
+    <h2 class="section-title">Recommended for your store</h2>
+    <p class="section-sub">Handpicked products on Shopee that pair well with ByteKit PH — from thermal printers to receipt paper and more.</p>
+
+    <div class="shopee-carousel-wrap">
+      <div class="shopee-carousel">
+
+        <!-- Card 1 
+        <a class="shopee-card" href="https://shopee.ph/YOUR-LINK-1" target="_blank" rel="noopener">
+          <div class="shopee-card-img">
+            🖨️
+            <span class="shopee-badge">Top Pick</span>
+          </div>
+          <div class="shopee-card-body">
+            <div class="shopee-card-name">58mm Thermal Receipt Printer</div>
+            <div class="shopee-card-price">₱899 <small>₱1,299</small></div>
+            <div class="shopee-card-cta">🛍️ View on Shopee</div>
+          </div>
+        </a>
+
+        <!-- Card 2 
+        <a class="shopee-card" href="https://shopee.ph/YOUR-LINK-2" target="_blank" rel="noopener">
+          <div class="shopee-card-img">
+            🧾
+            <span class="shopee-badge">Best Seller</span>
+          </div>
+          <div class="shopee-card-body">
+            <div class="shopee-card-name">Thermal Paper Roll 57mm × 30m (10 pcs)</div>
+            <div class="shopee-card-price">₱149 <small>₱199</small></div>
+            <div class="shopee-card-cta">🛍️ View on Shopee</div>
+          </div>
+        </a>
+
+        <!-- Card 3 
+        <a class="shopee-card" href="https://shopee.ph/YOUR-LINK-3" target="_blank" rel="noopener">
+          <div class="shopee-card-img">
+            📱
+          </div>
+          <div class="shopee-card-body">
+            <div class="shopee-card-name">Android Tablet 10" for POS Use</div>
+            <div class="shopee-card-price">₱3,499 <small>₱4,200</small></div>
+            <div class="shopee-card-cta">🛍️ View on Shopee</div>
+          </div>
+        </a>
+
+        <!-- Card 4 
+        <a class="shopee-card" href="https://shopee.ph/YOUR-LINK-4" target="_blank" rel="noopener">
+          <div class="shopee-card-img">
+            📷
+            <span class="shopee-badge">Sale</span>
+          </div>
+          <div class="shopee-card-body">
+            <div class="shopee-card-name">USB Barcode Scanner Handheld 1D/2D</div>
+            <div class="shopee-card-price">₱599 <small>₱850</small></div>
+            <div class="shopee-card-cta">🛍️ View on Shopee</div>
+          </div>
+        </a>
+
+        <!-- Card 5 
+        <a class="shopee-card" href="https://shopee.ph/YOUR-LINK-5" target="_blank" rel="noopener">
+          <div class="shopee-card-img">
+            🔌
+          </div>
+          <div class="shopee-card-body">
+            <div class="shopee-card-name">OTG USB Hub for Android Tablet</div>
+            <div class="shopee-card-price">₱249 <small>₱399</small></div>
+            <div class="shopee-card-cta">🛍️ View on Shopee</div>
+          </div>
+        </a>
+
+        <!-- Card 6 
+        <a class="shopee-card" href="https://shopee.ph/YOUR-LINK-6" target="_blank" rel="noopener">
+          <div class="shopee-card-img">
+            💰
+          </div>
+          <div class="shopee-card-body">
+            <div class="shopee-card-name">Cash Drawer for POS Cashier</div>
+            <div class="shopee-card-price">₱1,299 <small>₱1,799</small></div>
+            <div class="shopee-card-cta">🛍️ View on Shopee</div>
+          </div>
+        </a>
+
+      </div>
+      <p class="shopee-scroll-hint">← Swipe to see more picks →</p>
+    </div>
+
+    <p class="shopee-disclaimer">⚠️ Some links above may be affiliate links. ByteKit PH may earn a small commission at no extra cost to you.</p>
+  </div>
+</section>
+-->
+
 <!-- OFFLINE -->
 <section class="offline-section">
   <div class="offline-inner">
@@ -832,7 +1012,7 @@
 
       <p><strong>👶 Children's Privacy:</strong> The App is intended for adults operating small businesses. It is not directed at children under 13.</p>
 
-      <p><strong>Contact:</strong> Questions? Email us at <a href="mailto:bytekitph@gmail.com" style="color:var(--green);font-weight:600;">bytekitph@gmail.com</a> or message us on <a href="https://www.facebook.com/profile.php?id=61575141544282" style="color:var(--green);font-weight:600;">Facebook</a>.</p>
+      <p><strong>Contact:</strong> Questions? <a href="mailto:bytekitph@gmail.com" style="color:var(--green);font-weight:600;">Email us</a> or message us on <a href="https://www.facebook.com/profile.php?id=61575141544282" style="color:var(--green);font-weight:600;">Facebook</a>.</p>
     </div>
   </div>
 </section>
@@ -849,7 +1029,7 @@
       <div class="contact-info">
         <h3>ByteKit PH Support</h3>
         <p>For app support, bug reports, feature requests, or any questions — reach us via email or Facebook and we'll get back to you as soon as possible.</p>
-        <a href="mailto:bytekitph@gmail.com" style="margin-right:8px;">📧 bytekitph@gmail.com</a>
+        <a href="mailto:bytekitph@gmail.com" style="margin-right:8px;">📧 Send us an Email</a>
         <a href="https://www.facebook.com/profile.php?id=61575141544282">💬 Message on Facebook</a>
       </div>
     </div>
@@ -858,11 +1038,11 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 <strong>ByteKit PH</strong> · Natividad, Pangasinan, Philippines</p>
+  <p>© 2026 <strong>ByteKit PH</strong>Philippines</p>
   <p style="margin-top:6px;font-size:12px;">
     <a href="privacy-policy.html" style="color:rgba(255,255,255,0.5);text-decoration:none;">Privacy Policy</a>
     &nbsp;·&nbsp;
-    <a href="mailto:bytekitph@gmail.com" style="color:rgba(255,255,255,0.5);text-decoration:none;">bytekitph@gmail.com</a>
+    <a href="mailto:bytekitph@gmail.com" style="color:rgba(255,255,255,0.5);text-decoration:none;">Email</a>
     &nbsp;·&nbsp;
     <a href="https://www.facebook.com/profile.php?id=61575141544282" style="color:rgba(255,255,255,0.5);text-decoration:none;">Facebook</a>
   </p>
