@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy – ByteKit Sales and Inventory Tracker</title>
+    <title>Privacy Policy â€“ ByteKit Sales and Inventory Tracker</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -106,24 +106,25 @@
 
 <div class="container">
 
-    <p class="effective">Effective Date: April 2, 2026 &nbsp;|&nbsp; Last Updated: June 25, 2026</p>
+    <p class="effective">Effective Date: April 2, 2026 &nbsp;|&nbsp; Last Updated: July 31, 2026</p>
 
     <div class="card">
-        <h2>👋 Overview</h2>
+        <h2>ðŸ‘‹ Overview</h2>
         <p>
             ByteKit Sales and Inventory Tracker ("the App") is developed and maintained by
             <strong>ByteKit PH</strong>. This Privacy Policy explains how the App handles
             information when you use it on your Android device.
         </p>
         <div class="highlight">
-            ByteKit is designed to work fully offline. Your business data — products, sales,
-            customers, and expenses — is stored locally on your device and is never sent to
-            our servers.
+            By default, ByteKit works fully offline. Your business data â€” products, sales,
+            customers, and expenses â€” is stored locally on your device. It is only ever sent
+            elsewhere if you choose to turn on an optional feature â€” Google Drive Backup or
+            LAN Sync between your own devices â€” both described in detail below.
         </div>
     </div>
 
     <div class="card">
-        <h2>📦 Data We Collect</h2>
+        <h2>ðŸ“¦ Data We Collect</h2>
         <span class="badge">LOCAL ONLY</span>
         <p>The App stores the following data <strong>on your device only</strong>:</p>
         <ul>
@@ -136,21 +137,67 @@
             <li>E-services transaction records</li>
         </ul>
         <p>
-            None of this data is transmitted to ByteKit PH or any third party.
-            All data remains on your device unless you manually export a backup file.
+            None of this data is transmitted to ByteKit PH. It stays on your device, unless
+            you manually export a backup file, turn on <strong>Google Drive Backup</strong>
+            (see below), or use <strong>LAN Sync</strong> to share it with another device you
+            own on your own local network (also see below).
+        </p>
+    </div>
+
+    <div class="card" id="google-drive-backup">
+        <h2>ðŸ”— Google Drive Backup (Optional)</h2>
+        <span class="badge">OFF BY DEFAULT â€” YOU TURN THIS ON</span>
+        <p>
+            ByteKit offers an optional feature that automatically backs up your business data
+            to <strong>your own Google Drive</strong>. This feature is off unless you sign in
+            with your Google Account and enable it in Settings.
+        </p>
+        <p><strong>What we access:</strong> ByteKit uses Google's
+            <code>drive.file</code> scope â€” the most restrictive Drive scope Google offers.
+            This means the App can only see and manage files <strong>that it creates itself</strong>.
+            It cannot see, read, or modify any other file in your Google Drive â€” not your
+            photos, documents, or anything created by another app.
+        </p>
+        <p><strong>What gets uploaded:</strong> a periodic <code>.zip</code> backup of your
+            business data and product photos â€” the same content as a manual Export â€” saved
+            into a folder named <strong>"ByteKit POS Backups"</strong> that the App creates in
+            your Drive.
+        </p>
+        <p><strong>Who can see it:</strong> only you. This backup goes directly from your
+            device to your own Google Drive account. <strong>ByteKit PH never receives, stores,
+            or has access to this data at any point</strong> â€” we do not operate a server that
+            this data passes through.
+        </p>
+        <p><strong>Turning it off / revoking access:</strong> you can disable Google Drive
+            Backup at any time in the App's Settings. You can also revoke ByteKit's access to
+            your Google Account entirely at
+            <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.
+            Revoking access does not delete backups already saved in your Drive â€” those are
+            your files, in your Drive, and you can delete them yourself at any time.
+        </p>
+    </div>
+
+    <div class="card" id="lan-sync">
+        <h2>ðŸ”„ LAN Sync (Optional)</h2>
+        <p>
+            ByteKit lets you connect two or more of your own devices (e.g. a main counter and
+            a second till) so they share the same product, sales, and customer data. This
+            happens directly between your devices over your own local Wi-Fi network â€” it does
+            not go through the internet or through any ByteKit PH server. If your devices
+            aren't on the same local network, sync simply doesn't happen.
         </p>
     </div>
 
     <div class="card">
-        <h2>📷 Camera Permission</h2>
+        <h2>ðŸ“· Camera Permission</h2>
         <p>
             The App requests access to your device camera for two purposes:
         </p>
         <ul>
-            <li><strong>Barcode scanning</strong> — to quickly add products to a sale by scanning their barcode</li>
-            <li><strong>QR code scanning</strong> — to connect and sync with another device over a local network (LAN sync)</li>
-            <li><strong>Product photos</strong> — to capture and attach photos to your product inventory</li>
-            <li><strong>Payment screenshot scanning (OCR)</strong> — to read GCash and Maya payment confirmation screenshots for faster transaction recording</li>
+            <li><strong>Barcode scanning</strong> â€” to quickly add products to a sale by scanning their barcode</li>
+            <li><strong>QR code scanning</strong> â€” to connect and sync with another device over a local network (LAN sync)</li>
+            <li><strong>Product photos</strong> â€” to capture and attach photos to your product inventory</li>
+            <li><strong>Payment screenshot scanning (OCR)</strong> â€” to read GCash and Maya payment confirmation screenshots for faster transaction recording</li>
         </ul>
         <p>
             Camera access is only activated when you tap the scan or photo button.
@@ -160,31 +207,32 @@
     </div>
 
     <div class="card">
-        <h2>🌐 Internet Permission</h2>
+        <h2>ðŸŒ Internet Permission</h2>
         <p>
-            The App requests internet access for the following limited purposes only:
+            The App requests internet access for the following purposes:
         </p>
         <ul>
-            <li><strong>License verification</strong> — to validate your access code when activating the app or transferring it to a new device</li>
-            <li><strong>Silent revalidation</strong> — a periodic background check (every 30 seconds when online) to confirm your license is still active</li>
+            <li><strong>License verification</strong> â€” to validate your access code when activating the app or transferring it to a new device</li>
+            <li><strong>Silent revalidation</strong> â€” a periodic background check (every 30 seconds when online) to confirm your license is still active</li>
+            <li><strong>Google Drive Backup (optional)</strong> â€” only if you choose to sign in and enable it; see the dedicated section above</li>
         </ul>
         <p>
-            The App functions fully offline after initial activation.
-            Internet is never required for day-to-day use such as sales, inventory,
-            or reports.
+            The App functions fully offline for day-to-day use such as sales, inventory,
+            and reports â€” internet is only used for the license checks above, and for
+            Google Drive Backup specifically if you've turned that on.
         </p>
         <p>
             License verification communicates only with a private, secure repository
             maintained by ByteKit PH. No personal or business data is transmitted
-            during this process — only your device's anonymous hardware identifier
+            during this process â€” only your device's anonymous hardware identifier
             and your license key.
         </p>
     </div>
 
     <div class="card">
-        <h2>📱 Device Identifier</h2>
+        <h2>ðŸ“± Device Identifier</h2>
         <p>
-            The App reads your device's <strong>Android ID</strong> — a unique anonymous
+            The App reads your device's <strong>Android ID</strong> â€” a unique anonymous
             identifier assigned by Android to each device. This identifier is used
             exclusively to bind your license to your device and to prevent
             unauthorized sharing of license keys.
@@ -196,7 +244,7 @@
     </div>
 
     <div class="card">
-        <h2>📳 Vibration Permission</h2>
+        <h2>ðŸ“³ Vibration Permission</h2>
         <p>
             The App requests vibration permission to provide haptic feedback when a
             barcode is successfully scanned. This is optional and can be turned off
@@ -205,17 +253,17 @@
     </div>
 
     <div class="card">
-        <h2>🔔 Notifications Permission</h2>
+        <h2>ðŸ”” Notifications Permission</h2>
         <p>
              The App requests permission to send notifications to your device. These are used exclusively to provide:
-            • Inventory Alerts — to notify you of low stock levels or expired products.
-            • System Status — to provide updates on background tasks like data backups.
+            â€¢ Inventory Alerts â€” to notify you of low stock levels or expired products.
+            â€¢ System Status â€” to provide updates on background tasks like data backups.
             All notification logic is processed locally on your device.
             The App does not send notification data to external servers, and you can disable these alerts at any time in your device settings.
         </p>
     </div>
     <div class="card">
-        <h2>📶 Bluetooth Permission</h2>
+        <h2>ðŸ“¶ Bluetooth Permission</h2>
         <p>
             The App requests Bluetooth access to connect to external hardware, such as thermal receipt printers.
             This connection is used only for local printing and no business or personal data is transmitted
@@ -223,20 +271,22 @@
         </p>
     </div>
     <div class="card">
-        <h2>💾 Backup Files</h2>
+        <h2>ðŸ’¾ Local Backup Files</h2>
         <p>
-            When you use the Export or Auto Save feature, the App creates a
+            When you use the Export or local Auto Save feature, the App creates a
             <strong>.zip backup file</strong> containing your business data and product images.
-            This file is saved to a folder you choose on your device.
+            This file is saved to a folder you choose on your device â€” this is separate from
+            the optional Google Drive Backup described earlier.
         </p>
         <p>
-            ByteKit PH does not have access to your backup files.
-            You are solely responsible for the security of any exported backup files.
+            ByteKit PH does not have access to your backup files, whether local or on
+            Google Drive. You are solely responsible for the security of any exported backup
+            files.
         </p>
     </div>
 
     <div class="card">
-        <h2>🔒 Data Security</h2>
+        <h2>ðŸ”’ Data Security</h2>
         <p>
             Since all data is stored locally on your device, the security of your
             data depends on the security of your Android device. We recommend:
@@ -249,7 +299,7 @@
     </div>
 
     <div class="card">
-        <h2>👶 Children's Privacy</h2>
+        <h2>ðŸ‘¶ Children's Privacy</h2>
         <p>
             ByteKit Sales and Inventory Tracker is intended for use by adults and
             business owners. The App is not directed at children under the age of 13.
@@ -257,23 +307,26 @@
         </p>
     </div>
     <div class="card" id="data-deletion">
-        <h2>🗑️ Data Deletion</h2>
+        <h2>ðŸ—‘ï¸ Data Deletion</h2>
         <p>
             You have full control over your data in ByteKit Sales and Inventory Tracker.
             Since all data is stored locally on your device, you can delete it at any time
             using one of the following methods:
         </p>
         <ul>
-            <li><strong>Delete Individual Records</strong> — Go to Products, Customers, Orders, or Expenses and swipe or tap to delete any specific item.</li>
-            <li><strong>Clear All Data</strong> — Open Settings → scroll to "Delete All Data" → tap "Confirm Delete" to permanently remove all app data including products, sales, customers, photos, and settings.</li>
-            <li><strong>Uninstall the App</strong> — Removing the app from your device automatically deletes all stored data. No data remains on our servers.</li>
+            <li><strong>Delete Individual Records</strong> â€” Go to Products, Customers, Orders, or Expenses and swipe or tap to delete any specific item.</li>
+            <li><strong>Clear All Data</strong> â€” Open Settings â†’ scroll to "Delete All Data" â†’ tap "Confirm Delete" to permanently remove all app data including products, sales, customers, photos, and settings.</li>
+            <li><strong>Uninstall the App</strong> â€” Removing the app from your device automatically deletes all stored data. No data remains on our servers.</li>
         </ul>
         <div class="highlight">
             <strong>What gets deleted:</strong> All products, customers, orders, expenses, 
             e-service records, product photos, store settings, and account data stored 
             locally on your device.<br><br>
-            <strong>What stays:</strong> Nothing — all data is permanently removed. 
-            Exported backup files (.zip) that you saved separately are not affected.
+            <strong>What stays:</strong> Nothing on your device â€” all local data is permanently removed.
+            Exported local backup files (.zip) that you saved separately are not affected, and
+            neither are backups already saved to your own Google Drive â€” those are your files
+            in your own Drive; delete them there directly, or revoke ByteKit's Drive access
+            entirely at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.
         </div>
         <p style="margin-top: 10px;">
             <strong>To request data deletion assistance:</strong> Contact us at 
@@ -282,7 +335,7 @@
         </p>
     </div>
     <div class="card">
-        <h2>🔄 Changes to This Policy</h2>
+        <h2>ðŸ”„ Changes to This Policy</h2>
         <p>
             ByteKit PH may update this Privacy Policy from time to time.
             Any changes will be reflected on this page with an updated effective date.
@@ -292,7 +345,7 @@
     </div>
 
     <div class="contact-box">
-        <h2 style="color:white; justify-content:center; margin-bottom:8px;">📬 Contact Us</h2>
+        <h2 style="color:white; justify-content:center; margin-bottom:8px;">ðŸ“¬ Contact Us</h2>
         <p>If you have any questions about this Privacy Policy, contact us:</p>
         <p style="margin-top:10px;">
             <strong style="color:white;">ByteKit PH</strong><br>
@@ -305,7 +358,7 @@
     </div>
 
     <p class="footer">
-        © 2026 ByteKit PH · Natividad, Pangasinan, Philippines<br>
+        Â© 2026 ByteKit PH Â· Natividad, Pangasinan, Philippines<br>
         ByteKit Sales and Inventory Tracker
     </p>
 
