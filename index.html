@@ -38,9 +38,9 @@
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(255,255,255,0.92);
+    background: rgba(30,58,95,0.92);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     z-index: 100;
     padding: 14px 24px;
     display: flex; justify-content: space-between; align-items: center;
@@ -49,17 +49,17 @@
     font-family: 'Syne', sans-serif;
     font-weight: 800;
     font-size: 20px;
-    color: var(--blue);
+    color: white;
     display: flex; align-items: center; gap: 8px;
   }
   .nav-logo .dot { color: var(--green); }
   .nav-links { display: flex; gap: 24px; list-style: none; }
   .nav-links a {
-    text-decoration: none; color: var(--muted);
+    text-decoration: none; color: rgba(255,255,255,0.75);
     font-size: 14px; font-weight: 500;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--green); }
+  .nav-links a:hover { color: #4ade80; }
   .nav-download {
     background: var(--green);
     color: white !important;
@@ -478,7 +478,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo"><img src="logo.png" alt="ByteKit PH logo" style="width:30px;height:30px;border-radius:8px;vertical-align:middle;margin-right:8px;">ByteKit<span class="dot"> PH</span></div>
+  <div class="nav-logo"><img src="logo.png" alt="ByteKit PH logo" style="height:32px;width:auto;vertical-align:middle;margin-right:8px;">ByteKit<span class="dot"> PH</span></div>
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
     <li><a href="#screenshots">Screenshots</a></li>
