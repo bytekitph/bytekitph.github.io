@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ByteKit PH— Sales & Inventory Tracker by ByteKit PH</title>
-<meta name="google-site-verification" content="MYoXlsjygDeUBz9aVy4TqYU3cZiMWYZRu3Qg_cJPLwg" />
 <link rel="icon" type="image/png" href="logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+
   :root {
     --green: #00a651;
     --green-dark: #007a3d;
@@ -24,9 +24,9 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  .bytekit-root { scroll-behavior: smooth; }
 
-  body {
+  .bytekit-root {
     font-family: 'DM Sans', sans-serif;
     background: var(--bg);
     color: var(--text);
@@ -42,8 +42,11 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255,255,255,0.08);
     z-index: 100;
-    padding: 14px 24px;
-    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
   }
   .nav-logo {
     font-family: 'Syne', sans-serif;
@@ -51,34 +54,97 @@
     font-size: 20px;
     color: white;
     display: flex; align-items: center; gap: 8px;
+    flex-shrink: 0;
+    white-space: nowrap;
   }
+  .nav-logo img { display: none; }
   .nav-logo .dot { color: var(--green); }
-  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links {
+    display: flex;
+    gap: 12px;
+    list-style: none;
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: flex-end;
+    overflow: visible;
+    flex-wrap: nowrap;
+  }
+  .nav-links li { flex-shrink: 0; }
   .nav-links a {
     text-decoration: none; color: rgba(255,255,255,0.75);
-    font-size: 14px; font-weight: 500;
+    font-size: 13px; font-weight: 500;
     transition: color 0.2s;
+    white-space: nowrap;
   }
   .nav-links a:hover { color: #4ade80; }
   .nav-download {
     background: var(--green);
     color: white !important;
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 8px;
     font-size: 13px !important;
     font-weight: 700 !important;
     display: inline-flex; align-items: center; gap: 6px;
     transition: background 0.2s, transform 0.15s !important;
     box-shadow: 0 2px 10px rgba(0,166,81,0.3);
+    white-space: nowrap;
   }
   .nav-download:hover { background: var(--green-dark) !important; color: white !important; transform: translateY(-1px); }
-  .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-left: 8px;
+    position: relative;
+  }
   .nav-download-pc {
     background: #ffffff !important;
     color: #1e3a5f !important;
     box-shadow: 0 2px 10px rgba(255,255,255,0.25);
   }
   .nav-download-pc:hover { background: #e8f8f0 !important; color: #007a3d !important; }
+  .nav-menu {
+    display: none;
+    position: relative;
+  }
+  .nav-menu-btn {
+    list-style: none;
+    cursor: pointer;
+    color: white;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-menu-btn::-webkit-details-marker { display: none; }
+  .nav-menu-btn::marker { content: ""; }
+  .nav-menu-list {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    min-width: 200px;
+    background: #1e3a5f;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 8px;
+    list-style: none;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+    z-index: 120;
+  }
+  .nav-menu-list a {
+    display: block;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .nav-menu-list a:hover { background: rgba(255,255,255,0.08); color: #4ade80; }
   .no-underline {
       text-decoration: none;
     }
@@ -487,8 +553,14 @@
   .hero-inner > *:nth-child(4) { animation-delay: 0.4s; }
   .hero-inner > *:nth-child(5) { animation-delay: 0.5s; }
 
-  @media (max-width: 600px) {
+  @media (max-width: 1100px) {
     .nav-links { display: none; }
+    .nav-menu { display: block; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 12px; }
+    .nav-links { display: none; }
+    .nav-menu { display: block; }
     .nav-actions { gap: 6px; }
     .nav-download { padding: 8px 10px; font-size: 12px !important; }
     .hero-stats { gap: 24px; }
@@ -496,30 +568,42 @@
     .contact-card { flex-direction: column; text-align: center; }
     .download-grid { grid-template-columns: 1fr !important; }
   }
+
 </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav>
-  <div class="nav-logo"><a href="index.html" class="no-underline"><img src="logo.png" alt="ByteKit PH logo" style="height:32px;width:auto;vertical-align:middle;margin-right:8px;"></a>ByteKit<span class="dot"> PH</span></div>
+  <div class="nav-logo"><a href="#top" class="no-underline">ByteKit<span class="dot"> PH</span></a></div>
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
     <li><a href="#download">Download</a></li>
     <li><a href="#screenshots">Screenshots</a></li>
-    <li><a href="#shopee">Shopee Picks</a></li>
+    <li><a href="#shopee">Shopee</a></li>
     <li><a href="#privacy">Privacy</a></li>
     <li><a href="terms-of-service.html">Terms</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
     <a href="https://play.google.com/store/apps/details?id=com.bytekitpos.app" class="nav-download" target="_blank" rel="noopener">Android</a>
-    <a href="https://www.mediafire.com/file/ix0j2cfhkz7sm36/ByteKit+Sales+and+Inventory+Tracker+Setup+2.1.1.exe/file" class="nav-download nav-download-pc" target="_blank" rel="noopener">Windows PC</a>
+    <a href="https://www.mediafire.com/file/ix0j2cfhkz7sm36/ByteKit+Sales+and+Inventory+Tracker+Setup+2.1.1.exe/file" class="nav-download nav-download-pc" target="_blank" rel="noopener">Windows</a>
+    <details class="nav-menu">
+      <summary class="nav-menu-btn" aria-label="Open menu">Menu</summary>
+      <ul class="nav-menu-list">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#download">Download</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#shopee">Shopee Picks</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="terms-of-service.html">Terms</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </details>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-grid"></div>
   <div class="hero-inner">
     <div class="hero-badge">Android & Windows PC Available</div>
@@ -889,6 +973,5 @@
     <a href="https://www.facebook.com/profile.php?id=61575141544282" style="color:rgba(255,255,255,0.5);text-decoration:none;">Facebook</a>
   </p>
 </footer>
-
 </body>
 </html>
